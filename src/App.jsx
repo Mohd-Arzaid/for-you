@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [showHint, setShowHint] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const audioRef = useRef(null);
 
   const handleInteraction = () => {
@@ -14,6 +15,11 @@ function App() {
   };
 
   useEffect(() => {
+    // Preload image
+    const img = new Image();
+    img.src = "/chomu.png";
+    img.onload = () => setImageLoaded(true);
+
     // Try autoplay
     if (audioRef.current) {
       audioRef.current.currentTime = 15;
@@ -38,6 +44,8 @@ function App() {
         <img
           src="/chomu.png"
           alt="Chomu"
+          loading="eager"
+          fetchPriority="high"
           className="max-w-full max-h-full object-contain -mt-16 md:mt-0"
         />
 
