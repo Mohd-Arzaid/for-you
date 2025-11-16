@@ -38,7 +38,7 @@ function App() {
         <img
           src="/chomu.png"
           alt="Chomu"
-          className="max-w-full max-h-full object-contain"
+          className="max-w-full max-h-full object-contain -mt-16 md:mt-0"
         />
 
         {showHint && (
